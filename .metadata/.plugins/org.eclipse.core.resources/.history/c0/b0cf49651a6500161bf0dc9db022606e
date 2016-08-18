@@ -1,0 +1,10 @@
+package Pipes;
+
+import java.util.ArrayList;
+
+public interface Pipe<T> {
+	private ArrayList buffer; 
+	public void push();
+	public void pop();
+	
+}

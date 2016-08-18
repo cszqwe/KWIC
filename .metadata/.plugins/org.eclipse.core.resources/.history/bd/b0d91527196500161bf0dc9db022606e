@@ -1,0 +1,51 @@
+public class IPAddress {
+	public static void main (String[] args){
+		for (String s:args) {
+			if (s.length()=8) {
+				String i1 = s.substring(0,7);
+				String i2 = s.substring(8,15);
+				String i3 = s.substring(16,23);
+				String i4 = s.substring(24,31);
+				List<String> l = new ArrayList<String>();
+				l.add(i1);
+				l.add(i2);
+				l.add(i3);
+				l.add(i4);
+				List<String> result = new ArrayList<String>();
+				for(String i:l){
+					int add=0;
+					if(i.charAt(0)=='1'){
+						add = add+128;
+					}
+					if(i.charAt(1)=='1'){
+						add = add+64;
+					}
+					if(i.charAt(2)=='1'){
+						add = add+32;
+					}
+					if(i.charAt(3)=='1'){
+						add = add+16;
+					}
+					if(i.charAt(4)=='1'){
+						add = add+8;
+					}
+					if(i.charAt(5)=='1'){
+						add = add+4;
+					}
+					if(i.charAt(6)=='1'){
+						add = add+2;
+					}
+					if(i.charAt(7)=='1'){
+						add = add+1;
+					}
+					result.add(new Integer(add).toString());
+
+
+				} 
+				String iPAddress = result.get(0)+"."+result.get(1)+"."+result.get(2)+"."+result.get(3);
+				System.out.println(iPAddress);
+
+			}
+		}
+	}
+}

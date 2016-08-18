@@ -1,0 +1,11 @@
+package Pipes;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public interface Pipe<T> {
+	public List buffer; 
+	public void push();
+	public void pop();
+	
+}

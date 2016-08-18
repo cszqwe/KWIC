@@ -1,0 +1,8 @@
+package Pipes;
+
+public interface Pipe<T> {
+	private ArrayList<T> buffer; 
+	public void push();
+	public void pop();
+	
+}

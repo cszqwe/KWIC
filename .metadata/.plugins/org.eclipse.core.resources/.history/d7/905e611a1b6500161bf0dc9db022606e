@@ -1,0 +1,20 @@
+package Pipes;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class StringPine implements Pipe<String>{
+	public List<String> buffer = new ArrayList<String>();
+
+	@Override
+	public void push(String input) {
+		buffer.add(input);		
+	}
+
+	@Override
+	public String pop() {
+
+		return null;
+	}
+
+}

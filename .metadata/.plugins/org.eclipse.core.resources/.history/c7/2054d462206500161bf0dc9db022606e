@@ -1,0 +1,14 @@
+package Helper;
+
+public class IgnoreHelper {
+	private String[] listOfIgnore;
+	public IgnoreHelper(String[] list){
+		listOfIgnore = list;
+	}
+	public boolean ifIgnore(String str){
+		for (String element: listOfIgnore){
+			
+		}
+		return false;
+	}
+}

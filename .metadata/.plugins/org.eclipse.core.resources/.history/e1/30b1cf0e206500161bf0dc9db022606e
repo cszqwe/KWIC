@@ -1,0 +1,5 @@
+package Helper;
+
+public class IgnoreHelper {
+	private String[] listOfIgnore;
+}

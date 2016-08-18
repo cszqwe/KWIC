@@ -1,0 +1,71 @@
+package UI;  
+  
+import java.awt.FlowLayout;  
+import java.awt.GridLayout;  
+import java.awt.HeadlessException;  
+import javax.swing.ButtonGroup;  
+import javax.swing.JButton;  
+import javax.swing.JCheckBox;  
+import javax.swing.JFrame;  
+import javax.swing.JLabel;  
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
+import javax.swing.JTextField;  
+  
+public class KWICUI extends JFrame{  
+  
+    JPanel row1 = new JPanel();  
+
+    JPanel row2 = new JPanel();  
+    JLabel inputLabel = new JLabel("Input" , JLabel.CENTER);  
+    JTextField input = new JTextField();  
+      
+    JPanel row3 = new JPanel();  
+    JButton enter = new JButton("Enter");  
+    JButton clear = new JButton("Clear");  
+      
+    JPanel row4 = new JPanel();  
+    JLabel outputLabel = new JLabel("Output" , JLabel.CENTER);  
+    JTextArea output = new JTextArea(20,10);  
+  
+    public KWICUI() throws HeadlessException {  
+        super("Key Word In Context");  
+        setSize(500 , 400);  
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);  
+        GridLayout gridLayout = new GridLayout(5, 1, 10, 10);  
+        setLayout(gridLayout);  
+          
+        FlowLayout flowLayout1 = new FlowLayout(FlowLayout.CENTER , 10 , 10);  
+
+        row1.setLayout(flowLayout1);  
+        add(row1);  
+          
+        GridLayout gridLayout1 = new GridLayout(2, 7, 10, 10);  
+        row2.setLayout(gridLayout1);  
+        row2.add(inputLabel);  
+        row2.add(input);
+        add(row2);  
+          
+        FlowLayout flowLayout2 = new FlowLayout(FlowLayout.CENTER);  
+        row3.setLayout(flowLayout2);  
+        row3.add(enter);  
+        row3.add(clear);  
+        add(row3);  
+        GridLayout gridLayout2 = new GridLayout(2, 3, 20, 10);  
+        row4.setLayout(gridLayout2);  
+        row4.add(outputLabel);
+        JScrollPane jslp = new JScrollPane(output); 
+        jslp.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS); 
+        jslp.setVerticalScrollBarPolicy( JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+        row4.add(output);
+        output.setAutoscrolls(true);
+        add(row4);  
+        setVisible(true);  
+    }  
+      
+      
+    public static void main(String[] args) {  
+        KWICUI kwicUI = new KWICUI();  
+    }  
+}

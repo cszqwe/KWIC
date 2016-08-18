@@ -1,0 +1,5 @@
+package Filters;
+
+public interface Filters<T1,T2> extends Runnable{
+	public T1 read(Filter inputChannel)
+}

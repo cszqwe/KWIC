@@ -1,0 +1,7 @@
+package Pipes;
+
+public interface Pipe<T> {
+	public void push();
+	public void pop();
+	
+}

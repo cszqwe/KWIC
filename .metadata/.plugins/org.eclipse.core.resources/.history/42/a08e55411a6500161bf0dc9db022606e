@@ -1,0 +1,17 @@
+package Pipes;
+
+public class StringPine implements Pipe{
+
+	@Override
+	public void push() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void pop() {
+		// TODO Auto-generated method stub
+		
+	}
+
+}

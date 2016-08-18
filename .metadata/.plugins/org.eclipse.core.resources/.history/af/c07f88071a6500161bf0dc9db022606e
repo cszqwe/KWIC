@@ -1,0 +1,5 @@
+package Pipes;
+
+public interface Pipe {
+
+}
