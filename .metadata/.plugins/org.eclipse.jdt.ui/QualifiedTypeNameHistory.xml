@@ -1,11 +1,16 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-<fullyQualifiedTypeName name="javax.swing.JTextArea"/>
 <fullyQualifiedTypeName name="javax.swing.JScrollPane"/>
 <fullyQualifiedTypeName name="java.awt.event.ActionListener"/>
 <fullyQualifiedTypeName name="java.awt.event.ActionEvent"/>
-<fullyQualifiedTypeName name="java.util.List"/>
-<fullyQualifiedTypeName name="Pipes.StringArrayPipe"/>
-<fullyQualifiedTypeName name="Helper.IgnoreHelper"/>
 <fullyQualifiedTypeName name="java.util.ArrayList"/>
+<fullyQualifiedTypeName name="java.util.LinkedList"/>
+<fullyQualifiedTypeName name="java.util.List"/>
+<fullyQualifiedTypeName name="javax.swing.JTextArea"/>
+<fullyQualifiedTypeName name="Pipes.StringArrayPipe"/>
+<fullyQualifiedTypeName name="Filters.Alphabetizer"/>
+<fullyQualifiedTypeName name="Filters.CircularShift"/>
+<fullyQualifiedTypeName name="Filters.Input"/>
+<fullyQualifiedTypeName name="Filters.Output"/>
+<fullyQualifiedTypeName name="Helper.IgnoreHelper"/>
 </qualifiedTypeNameHistroy>

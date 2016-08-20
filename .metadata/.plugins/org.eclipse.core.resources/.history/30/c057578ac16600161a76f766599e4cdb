@@ -1,0 +1,35 @@
+package Filters;
+
+import javax.swing.JTextArea;
+
+import Pipes.Pipe;
+import Pipes.StringArrayPipe;
+
+public class Output implements Filters<String[], String[]>{
+
+	public String[] data;
+	public StringArrayPipe inputChannel; 
+	public StringArrayPipe outputChannel; 
+	private JTextArea writeArea;
+	@Override
+	public void run() {
+		while (true){
+			data = 
+		}
+	}
+
+	@Override
+	public String[] read(Pipe inputChannel) throws InterruptedException {
+		if (inputChannel == null){
+			return null;
+		}
+		return (String[]) inputChannel.pop();
+	}
+
+
+	@Override
+	public void write(Pipe outputChannel, String[] output) {
+		outputChannel.push(output);
+	}
+
+}

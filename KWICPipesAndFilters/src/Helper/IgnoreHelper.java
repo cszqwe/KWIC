@@ -2,7 +2,7 @@ package Helper;
 
 public class IgnoreHelper {
 	private static String[] listOfIgnore;
-	public void init(String[] list){
+	public static void init(String[] list){
 		listOfIgnore = list;
 	}
 	public static boolean ifIgnore(String str){

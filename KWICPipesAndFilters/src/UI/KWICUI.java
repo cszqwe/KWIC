@@ -5,6 +5,8 @@ import java.awt.GridLayout;
 import java.awt.HeadlessException;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.LinkedList;
+import java.util.List;
 
 import javax.swing.ButtonGroup;  
 import javax.swing.JButton;  
@@ -14,7 +16,14 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
-import javax.swing.JTextField;  
+import javax.swing.JTextField;
+
+import Filters.Alphabetizer;
+import Filters.CircularShift;
+import Filters.Input;
+import Filters.Output;
+import Helper.IgnoreHelper;
+import Pipes.StringArrayPipe;  
   
 public class KWICUI extends JFrame{  
   
@@ -22,7 +31,7 @@ public class KWICUI extends JFrame{
 
     JPanel row2 = new JPanel();  
     JLabel inputLabel = new JLabel("Input" , JLabel.CENTER);  
-    JTextField input = new JTextField();  
+    JTextArea input = new JTextArea();  
       
     JPanel row3 = new JPanel();  
     JButton enter = new JButton("Enter");  
@@ -32,7 +41,15 @@ public class KWICUI extends JFrame{
     JLabel outputLabel = new JLabel("Output" , JLabel.CENTER);  
     JTextArea output = new JTextArea(20,100);  
   
-    public KWICUI() throws HeadlessException {  
+    Input inputFilter;
+    Output outputFilter;
+    
+    public void setFilter(Input inputFilter, Output outputFilter){
+		this.inputFilter = inputFilter;
+		this.outputFilter = outputFilter;
+		this.outputFilter.setJTextArea(output);
+    }    
+    public KWICUI() throws HeadlessException {
         super("Key Word In Context");  
         setSize(500 , 800);  
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);  
@@ -40,8 +57,6 @@ public class KWICUI extends JFrame{
         setLayout(gridLayout);  
           
         FlowLayout flowLayout1 = new FlowLayout(FlowLayout.CENTER , 10 , 10);  
-
-
           
         GridLayout gridLayout1 = new GridLayout(2, 7, 10, 10);  
         row2.setLayout(gridLayout1);  
@@ -54,7 +69,9 @@ public class KWICUI extends JFrame{
         enter.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e){
-            	output.setText("asd");
+            	String[] inputStrings = input.getText().split("\n");
+            	inputFilter.write(inputStrings);
+            	//output.setText("asd");
             }
         }
         );
@@ -83,7 +100,26 @@ public class KWICUI extends JFrame{
     }  
       
       
-    public static void main(String[] args) {  
-        KWICUI kwicUI = new KWICUI();  
+    public static void main(String[] args) {
+    	StringArrayPipe pipeForInputCircularShift = new StringArrayPipe();
+    	StringArrayPipe pipeForCircularShiftAlphabetizer = new StringArrayPipe();
+    	StringArrayPipe pipeForAlphabetizerOutput = new StringArrayPipe();
+    	
+    	Input input = new Input(null, pipeForInputCircularShift);
+    	CircularShift circularShift = new CircularShift(pipeForInputCircularShift, pipeForCircularShiftAlphabetizer);
+    	Alphabetizer alphabetizer = new Alphabetizer(pipeForCircularShiftAlphabetizer, pipeForAlphabetizerOutput);
+    	Output output = new Output(pipeForAlphabetizerOutput, null);
+    	Thread thread1 = new Thread(input, "Input thread");
+    	Thread thread2 = new Thread(circularShift, "circularShift");
+    	Thread thread3 = new Thread(alphabetizer, "circularShift");
+    	Thread thread4 = new Thread(output, "Output thread");
+    	thread1.start();
+    	thread2.start();
+    	thread3.start();
+    	thread4.start();
+    	System.out.println("run!");
+        KWICUI kwicUI = new KWICUI();
+        IgnoreHelper.init(new String[]{"is", "the", "of", "and", "as", "a", "after"});
+        kwicUI.setFilter(input, output);
     }  
 }

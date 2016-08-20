@@ -1,0 +1,33 @@
+package Filters;
+
+import Pipes.Pipe;
+import Pipes.StringArrayPipe;
+
+public class Input implements Filters<String[], String[]>{
+
+	public String[] data;
+	public StringArrayPipe inputChannel; 
+	public StringArrayPipe outputChannel; 
+	
+	@Override
+	public void run() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public String[] read(Pipe inputChannel) throws InterruptedException {
+		if (inputChannel == null){
+			return null;
+		}
+		return (String[]) inputChannel.pop();
+	}
+
+
+	@Override
+	public void write(Pipe<String> outputChannel, String[] output) {
+		outputChannel.push(output);
+		
+	}
+
+}
