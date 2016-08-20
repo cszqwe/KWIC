@@ -1,8 +1,10 @@
 package Filters;
 
+import Helper.IgnoreHelper;
 import Pipes.Pipe;
 import Pipes.StringArrayPipe;
-
+import java.util.LinkedList;
+import java.util.List;
 public class CircularShift implements Filters<String[], String[]>{
 
 	public String[] data;
@@ -19,7 +21,26 @@ public class CircularShift implements Filters<String[], String[]>{
 		outputChannel.push(output);
 	}
 	
-	public String[] CircularShift(){
+	public String[] CircularShiftForString(String str){
+		String[] strings = str.split(" ");
+		List<String> tmpArr =new LinkedList<String>();
+		int length = 0;
+		for (String tmpStr: strings){
+			length++;
+			tmpArr.add(tmpStr);
+		}
+		String[] ans = new String[];
+		for (int i = 0; i < length;i++){
+			if (IgnoreHelper.ifIgnore(tmpArr.get(0))){
+				
+			}
+		}
+		IgnoreHelper.ifIgnore(str);
+		return strings;
+	}
+	
+	public String[] CircularShiftForStrings(){
+		
 		return data;
 		
 	}
